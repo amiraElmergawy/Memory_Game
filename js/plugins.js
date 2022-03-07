@@ -33,7 +33,7 @@ let firstImageSelected = null,
                 addElement('div', `<img id='${index}-1' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
                 addElement('div', `<img id='${index}-2' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
             });
-            console.log(document.images);
+            // console.log(document.images);
 
             for (i = 1; i <= imagesDisplay.children.length; i++) {
                 const imageDiv = imagesDisplay.childNodes[i];
@@ -46,7 +46,7 @@ let firstImageSelected = null,
                     else {
                         secondImageSelected = imageDiv.childNodes[0];
                         imageDiv.childNodes[0].classList.remove('d-none');
-                        if (+firstImageSelected.id.split('-')[0] != +secondImageSelected.id.split('-')[0]) {
+                        if ((+firstImageSelected.id.split('-')[0] != +secondImageSelected.id.split('-')[0]) || (firstImageSelected.id == secondImageSelected.id)) {
                             setTimeout(() => {
                                 firstImageSelected.classList.add('d-none');
                                 secondImageSelected.classList.add('d-none');
