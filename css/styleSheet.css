@@ -21,6 +21,10 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }
 
 .font, h1 {
@@ -55,6 +59,10 @@ img{
     height: 50px;
     padding: 4px;
     margin: -2px;
+}
+
+#score{
+    font-size: x-large;
 }
 /* input:focus{
     border          : 2px solid rgb(122, 121, 121);

@@ -7,7 +7,7 @@ let firstImageSelected = null,
     secondPageDiv = document.getElementById('secondDiv'),
     thirdPageDiv = document.getElementById('thirdDiv'),
     backBtnListner = document.getElementById('backBtn'),
-    // imageDisplay = document.getElementById('imageDisplay'),
+    backScoreDiv = document.getElementById('backScoreDiv'),
     imagesDisplay = document.getElementById('images'),
     images = [
         "./resources/images/alien-1.png",
@@ -55,14 +55,12 @@ let firstImageSelected = null,
                             }
                                 , 500);
                         } else {
-                            firstImageSelected.removeEventListener('click',helperFunction);
-                            secondImageSelected.removeEventListener('click',helperFunction);
+                            firstImageSelected.removeEventListener('click', helperFunction);
+                            secondImageSelected.removeEventListener('click', helperFunction);
                             firstImageSelected = null;
                             secondImageSelected = null;
                             score++;
-                            setTimeout(()=>{
-                                alert(`Cogratulations^_^ Your score is+${score}`);
-                            },200);
+                            document.getElementById('score').innerHTML = score;
                         }
                     }
                 });
@@ -75,20 +73,20 @@ let firstImageSelected = null,
 onePlayerListner.addEventListener('click', (e) => {
     firstPageDiv.classList.add('d-none');
     thirdPageDiv.classList.remove('d-none');
-    backBtn.classList.remove('d-none');
+    backScoreDiv.classList.remove('d-none');
     fillLetterDivs(); // fill images box
 });
 twoPlayersListner.addEventListener('click', (e) => {
     firstPageDiv.classList.add('d-none');
     secondPageDiv.classList.remove('d-none');
-    backBtn.classList.remove('d-none');
+    backScoreDiv.classList.remove('d-none');
 });
 
 // back to main menue
 backBtnListner.addEventListener('click', (e) => {
     thirdPageDiv.classList.add('d-none');
     secondPageDiv.classList.add('d-none');
-    backBtn.classList.add('d-none');
+    backScoreDiv.classList.add('d-none');
     firstPageDiv.classList.remove('d-none');
     ImageIndex = 0;
     firstImageSelected = null;
@@ -119,7 +117,7 @@ var addElement = function (elementType, elementInnerHTML, parent, property, prop
 //show all images for half second
 document.getElementById('showBtn').addEventListener('click', helperFunction);
 
-function helperFunction(){
+function helperFunction() {
     for (i = 1; i <= imagesDisplay.children.length; i++) {
         imagesDisplay.childNodes[i].children[0].classList.remove('d-none');
     }
@@ -151,7 +149,7 @@ function shuffle(array) {
 }
 
 // add none class to all images
-function hideAllImages(){
+function hideAllImages() {
     Array.from(document.images).forEach(element => {
         element.classList.add('d-none');
     });
