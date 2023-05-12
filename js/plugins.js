@@ -34,6 +34,7 @@ let firstImageSelected = null,
             //     addElement('div', `<img id='${index}-1' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
             //     addElement('div', `<img id='${index}-2' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
             // });
+
             for (let i = 0; i < imagesNo; i += 1) {
                 const element = images[i];
                 addElement('div', `<img id='${i}-1' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
@@ -114,17 +115,18 @@ var addElement = function (elementType, elementInnerHTML, parent, property, prop
     element[property] = propertyValue;
 }
 
-// document.getElementById('wordForm').addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     word = Array.from(e.target.word.value);
-//     if (word != '' || word.length != 0) {
+document.getElementById('imgNoForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    let imgNo = e.target.imgNo.value;
+    console.log(imgNo);
+//     if (imgNo != '' || imgNo.length != 0) {
 //         secondPageDiv.classList.add('d-none');
 //         thirdPageDiv.classList.remove('d-none');
-//         fillLetterDivs(word);
+//         fillLetterDivs(imgNo);
 //     } else {
-//         alert('Please, enter a correct word');
+//         alert('Please, enter a correct imgNo');
 //     }
-// })
+})
 
 //show all images for half second
 document.getElementById('showBtn').addEventListener('click', helperFunction);
