@@ -69,30 +69,36 @@ let firstImageSelected = null,
         shuffle(imagesDisplay);
     };
 
+
+//hide first page
+function arrangeSecondPart(){
+    firstPageDiv.classList.add('d-none');
+    backScoreDiv.classList.remove('d-none');
+}
+
 //move through app pages
 onePlayerListner.addEventListener('click', (e) => {
-    firstPageDiv.classList.add('d-none');
+    arrangeSecondPart();
     thirdPageDiv.classList.remove('d-none');
-    backScoreDiv.classList.remove('d-none');
     fillLetterDivs(); // fill images box
 });
 twoPlayersListner.addEventListener('click', (e) => {
-    firstPageDiv.classList.add('d-none');
+    arrangeSecondPart();
     secondPageDiv.classList.remove('d-none');
-    backScoreDiv.classList.remove('d-none');
 });
 
 // back to main menue
 backBtnListner.addEventListener('click', (e) => {
-    thirdPageDiv.classList.add('d-none');
     secondPageDiv.classList.add('d-none');
     backScoreDiv.classList.add('d-none');
+    thirdPageDiv.classList.add('d-none');
     firstPageDiv.classList.remove('d-none');
     ImageIndex = 0;
     firstImageSelected = null;
     secondImageSelected = null;
     document.getElementById('showBtn').classList.remove('d-none');
 });
+
 
 //append element to parent node with its properties
 var addElement = function (elementType, elementInnerHTML, parent, property, propertyValue) {
@@ -154,3 +160,5 @@ function hideAllImages() {
         element.classList.add('d-none');
     });
 }
+
+
