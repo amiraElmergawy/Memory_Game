@@ -27,18 +27,19 @@ let firstImageSelected = null,
         "./resources/images/amongus.png"
     ],
     imagesNo = 15,
-    ImageIndex = 0,
+    imageIndex = 0,
     fillLetterDivs = () => {
-        if (document.images.length == 0) {
+        // console.log("imageIndex= ",imageIndex);
+        // console.log("imagesNo= ",imagesNo);
+        if (document.images.length != imagesNo) {
             // images.forEach((element, index) => {
             //     addElement('div', `<img id='${index}-1' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
             //     addElement('div', `<img id='${index}-2' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
             // });
-
-            for (let i = 0; i < imagesNo; i += 1) {
-                const element = images[i];
-                addElement('div', `<img id='${i}-1' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
-                addElement('div', `<img id='${i}-2' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
+            for (; imageIndex < imagesNo; imageIndex ++) {
+                const element = images[imageIndex];
+                addElement('div', `<img id='${imageIndex}-1' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
+                addElement('div', `<img id='${imageIndex}-2' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
             }
 
 
@@ -100,7 +101,7 @@ backBtnListner.addEventListener('click', (e) => {
     backScoreDiv.classList.add('d-none');
     thirdPageDiv.classList.add('d-none');
     firstPageDiv.classList.remove('d-none');
-    ImageIndex = 0;
+    // imageIndex = 0;
     firstImageSelected = null;
     secondImageSelected = null;
     document.getElementById('showBtn').classList.remove('d-none');
@@ -119,13 +120,14 @@ document.getElementById('imgNoForm').addEventListener('submit', (e) => {
     e.preventDefault();
     let imgNo = e.target.imgNo.value;
     console.log(imgNo);
-//     if (imgNo != '' || imgNo.length != 0) {
-//         secondPageDiv.classList.add('d-none');
-//         thirdPageDiv.classList.remove('d-none');
-//         fillLetterDivs(imgNo);
-//     } else {
-//         alert('Please, enter a correct imgNo');
-//     }
+    if (imgNo != '' && imgNo > 0 && imgNo < 16) {
+        imagesNo = +imgNo;
+        secondPageDiv.classList.add('d-none');
+        thirdPageDiv.classList.remove('d-none');
+        fillLetterDivs();
+    } else {
+        alert('Please, enter a correct imgNo');
+    }
 })
 
 //show all images for half second
