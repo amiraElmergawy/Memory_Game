@@ -26,14 +26,20 @@ let firstImageSelected = null,
         "./resources/images/snowman.png",
         "./resources/images/amongus.png"
     ],
+    imagesNo = 15,
     ImageIndex = 0,
     fillLetterDivs = () => {
         if (document.images.length == 0) {
-            images.forEach((element, index) => {
-                addElement('div', `<img id='${index}-1' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
-                addElement('div', `<img id='${index}-2' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
-            });
-            // console.log(document.images);
+            // images.forEach((element, index) => {
+            //     addElement('div', `<img id='${index}-1' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
+            //     addElement('div', `<img id='${index}-2' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
+            // });
+            for (let i = 0; i < imagesNo; i += 1) {
+                const element = images[i];
+                addElement('div', `<img id='${i}-1' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
+                addElement('div', `<img id='${i}-2' class='d-none' src='${element}'/>`, imagesDisplay, 'className', 'back-btn animate__heartBeat');
+            }
+
 
             for (i = 1; i <= imagesDisplay.children.length; i++) {
                 const imageDiv = imagesDisplay.childNodes[i];
