@@ -1,8 +1,8 @@
 let firstImageSelected = null,
     secondImageSelected = null,
     score = 0,
-    onePlayerListner = document.getElementById('onePlayer'),
-    twoPlayersListner = document.getElementById('twoPlayers'),
+    playListener = document.getElementById('onePlayer'),
+    customListener = document.getElementById('twoPlayers'),
     firstPageDiv = document.getElementById('firstDiv'),
     secondPageDiv = document.getElementById('secondDiv'),
     thirdPageDiv = document.getElementById('thirdDiv'),
@@ -77,12 +77,12 @@ function arrangeSecondPart(){
 }
 
 //move through app pages
-onePlayerListner.addEventListener('click', (e) => {
+playListener.addEventListener('click', (e) => {
     arrangeSecondPart();
     thirdPageDiv.classList.remove('d-none');
     fillLetterDivs(); // fill images box
 });
-twoPlayersListner.addEventListener('click', (e) => {
+customListener.addEventListener('click', (e) => {
     arrangeSecondPart();
     secondPageDiv.classList.remove('d-none');
 });
